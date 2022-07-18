@@ -1,20 +1,39 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {useState,useEffect} from 'react';
+import db from '../db/firebase.js'
+import {onValue,ref} from 'firebase/database'
+import {SingleCard} from '../components/singlecard/SingleCard.js'
+import uniqid from 'uniqid'
 
-function BasicExample() {
-    return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    );
-  }
-  
-  export default BasicExample;
+function Card() {
+  const [card, setCard] = useState("")
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    onValue(ref(db), (snapshot) => {
+      setData([])
+      const dbData = snapshot.val()
+      if (dbData !== null) {
+        Object.values(dbData).map((card) => {
+          setData((oldArray) => [...oldArray, card])
+        })
+      }
+    })
+  }, [])
+
+
+
+  return (
+    <>
+    {data.map(el =>
+              <SingleCard
+              id={uniqid()}
+              image={el.fImage}
+              name={el.name}
+              author={el.author}
+              />
+        )}
+    </>
+  );
+}
+
+export default Card;

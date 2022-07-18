@@ -1,10 +1,11 @@
 import {Routes, Route} from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
-import Home from './components/Home';
+import Home from './components/home/Home.js'
 import Navigationbar from './components/Navigationbar';
 import Footer from './components/footer/Footer.js';
-import Test from './components/test.js'
+
+// import Test from './db/test.js'
 
 function App() {
   return (
@@ -16,7 +17,6 @@ function App() {
               <Route path="/contact" element={<Contact/>}/>
             </Routes>
             <Footer/>
-            <Test/>
             </>
   );
 }
