@@ -4,8 +4,8 @@ const Home = () => {
     return (
         <div className="wrapper">
             <ul>
-         <Card/>
-         </ul>
+                <Card/>
+            </ul>
          </div>
     );
 }

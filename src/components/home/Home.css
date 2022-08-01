@@ -1,5 +1,28 @@
+/* ul{
+    list-style: none;
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+li {
+    display: flex;
+    width: calc(25% - 20px);
+    max-width: 15%;
+    margin-left: 20px;
+    margin-top: 10px;
+} */
 .wrapper{
-    height:auto;
-    width: auto;
-    background-color: red;
+    margin: auto;
+    width: 90%;
+    margin-top: 1%
+}
+ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+}
+li {
+    display: flex;
 }
